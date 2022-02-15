@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Customer Name: <%= name %> </h3>
+    <h4>previous bills</h4>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">ITEM</th>
+            <th scope="col">ITEM COST</th>
+            <th scope="col">ITEM QUANTITY</th>
+            <th scope="col">AMOUNT</th>
+            <th scope="col">STATUS</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% var count=0 %> 
+        <% for( let index = 0; index < item.length-1; index++ ) { %>
+        <% for( let i = 0; i < item[index].length; i++ ) { %>
+          <tr>
+            <th scope="row"><%= count+1 %> </th>
+            <td><%= item[index][i] %> </td>
+            <td><%= itemcost[index][i] %></td>
+            <td><%= itemquantity[index][i] %></td>
+            <td><%= itemcost[index][i]*itemquantity[index][i] %> </td>
+            <td> <%= status[index] %>  </td>
+            <% count+=1 %> 
+          </tr>
+        <% } %>
+        <% } %>
+        </tbody>
+      </table>
+      <h6>Total Due Amount: <%= dueAmount %> </h6>
+      <h4>Today's bill</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">ITEM</th>
+            <th scope="col">ITEM COST</th>
+            <th scope="col">ITEM QUANTITY</th>
+            <th scope="col">AMOUNT</th>
+            <th scope="col">STATUS</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% var count=0 %> 
+        <% var index=item.length -1 %> 
+        <% var amount=0 %> 
+        <% for( let i = 0; i < item[index].length; i++ ) { %>
+          <tr>
+            <th scope="row"><%= count+1 %> </th>
+            <td><%= item[index][i] %> </td>
+            <td><%= itemcost[index][i] %></td>
+            <td><%= itemquantity[index][i] %></td>
+            <td><%= itemcost[index][i]*itemquantity[index][i] %> </td>
+            <% amount+=itemcost[index][i]*itemquantity[index][i] %> 
+            <td> <%= status[index] %>  </td>
+            <% count+=1 %> 
+          </tr>
+        <% } %>
+        </tbody>
+      </table>
+      <h6>Total bill: <%= amount %> </h6>
+        <form action="/data/<%= name %> "  method="post" >
+            <div id="container">
+                
+                <section id="mainsection">
+                <h5>ITEM </h5>
+                <label for="">Item Name</label>
+                <input type="text", name="Item" value="">
+                <label for="">Item cost</label>
+                <input type="number", name="ItemCost" value="">
+                <label for="">Item Quantity</label>
+                <input type="number", name="ItemQuantity" value="">
+                
+                </section>
+                <button id="demo" type="submit">ADD item</button>
+            </div>
+            
+        </form>
+    <form action="/invoice/<%= name %> " method="post">
+        <section>
+          <label for="">Status</label><br>
+          <input type="text", name="status" value=""><br>
+          <label for="">NOTES:</label>
+          <br>
+          <input type="text" name="notes">
+        </section>
+        <button type="submit">SUBMIT</button>
+    </form>
+    <form action="/" method="get">
+      <button type="submit">Back to home</button>
+    </form>
+        
+    
+    
+    
+</body>
+</html>

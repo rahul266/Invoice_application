@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Invoice of Clients</h2>
+    <form action="/home" method="post">
+        <label for="">Client Name  </label><br>
+        <input type="text" name="name">
+        <button type="submit">Submit</button>
+    </form>
+    <h2>View clinets data</h2>
+    <form action="/view" method="post">
+        <label for="">Client Name  </label><br>
+        <input type="text" name="name">
+        <button type="submit">Submit</button>
+    </form>
+    <h2>New Client</h2>
+    <form action="/new" method="post">
+        <label for="">New client Name:  </label>
+        <input type="text" name="name"><br><br>
+        <label for="">Email:  </label>
+        <input type="email" name="email" id="">
+        <br>
+        <button type="submit">Create</button>
+    </form>
+    <h2>status update</h2>
+    <form action="/status" method="post">
+        <label for="">Client Name:</label>
+        <input type="text" name="name">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
